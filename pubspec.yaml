@@ -1,0 +1,50 @@
+name: dev_mobile_avance # Le nom de votre projet
+description: Application de gestion d'endroits favoris avec Riverpod et image_picker.
+
+# Empêche la publication sur pub.dev
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0' # Version du SDK Dart compatible
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Packages requis pour l'activité :
+  # 1. Gestion d'état
+  flutter_riverpod: ^2.5.5 
+  
+  # 2. Identifiants uniques
+  uuid: ^4.4.0            
+  
+  # 3. Accès à la caméra
+  image_picker: ^1.1.0    
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+# La section flutter inclut les ressources (assets) et les polices (fonts).
+flutter:
+
+  # La ligne suivante indique que les images (assets) trouvées dans la section 'assets:' 
+  # doivent être incluses dans le build.
+  # assets:
+  #   - images/
+
+  uses-material-design: true
+  
+  # Pour ajouter des polices personnalisées à votre application, utilisez cette section :
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
