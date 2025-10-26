@@ -1,47 +1,45 @@
-name: dev_mobile_avance # Le nom de votre projet
-description: Application de gestion d'endroits favoris avec Riverpod et image_picker.
-
-# Empêche la publication sur pub.dev
+name: dev_mobile_avance
+description: Le projet dev_mobile_avance
+# The following line prevents the package from being accidentally published to pub.dev.
 publish_to: 'none' 
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.0 <4.0.0' # Version du SDK Dart compatible
+  # 🎯 CORRECTION: Mise à jour du SDK pour activer la Null Safety (Dart >= 2.12.0)
+  # et être compatible avec votre version 3.8.1.
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  # Packages requis pour l'activité :
-  # 1. Gestion d'état
-  flutter_riverpod: ^2.5.5 
+  # 📦 DÉPENDANCES MANQUANTES (causes des erreurs 'uri_does_not_exist')
+  firebase_core: ^2.24.2  # Assurez-vous d'utiliser la dernière version stable
+  cloud_firestore: ^4.13.3 # Assurez-vous d'utiliser la dernière version stable
+  image_picker: ^1.0.4    # Assurez-vous d'utiliser la dernière version stable
   
-  # 2. Identifiants uniques
-  uuid: ^4.4.0            
+  # Autres dépendances mentionnées dans votre analyse (mettez à jour les versions si nécessaire)
+  flutter_riverpod: ^2.4.9
+  riverpod: ^2.4.9
+  uuid: ^4.3.1
   
-  # 3. Accès à la caméra
-  image_picker: ^1.1.0    
-
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
+  # Outils d'analyse du code
+  flutter_lints: ^3.0.1 
 
-# La section flutter inclut les ressources (assets) et les polices (fonts).
 flutter:
-
-  # La ligne suivante indique que les images (assets) trouvées dans la section 'assets:' 
-  # doivent être incluses dans le build.
-  # assets:
-  #   - images/
-
   uses-material-design: true
-  
-  # Pour ajouter des polices personnalisées à votre application, utilisez cette section :
+
+  assets:
+    # CORRECTION: Si vous utilisez cette ligne, vous devez créer le dossier 'assets/images/'
+    - assets/images/
+    
   # fonts:
   #   - family: Schyler
   #     fonts:

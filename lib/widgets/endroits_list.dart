@@ -14,7 +14,7 @@ class EndroitsList extends StatelessWidget {
         child: Text(
           "Pas d'endroits favoris pour le moment",
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
         ),
       );
@@ -30,7 +30,7 @@ class EndroitsList extends StatelessWidget {
         title: Text(
           endroits[index].nom,
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
         ),
         onTap: () {

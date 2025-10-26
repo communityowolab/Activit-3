@@ -1,15 +1,16 @@
 import 'package:uuid/uuid.dart';
-import 'dart:io'; 
+import 'dart:io';
 
-const uuid = Uuid();
+const uuid = Uuid(); // final, pas const
 
 class Endroit {
   final String id;
   final String nom;
-  final File image; 
+  final File? imageFile;
 
   Endroit({
+    String? id,
     required this.nom,
-    required this.image, 
-  }) : id = uuid.v4();
+    this.imageFile,
+  }) : id = id ?? uuid.v4();
 }

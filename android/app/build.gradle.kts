@@ -1,48 +1,31 @@
-plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id("dev.flutter.flutter-gradle-plugin")
-}
-
-android {
-    namespace = "com.example.dev_mobile_avance"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-
-    defaultConfig {
-      
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
-    }
-
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
-}
-
-flutter {
-    source = "../.."
-}
-android {
+buildscript {
+    // La version de Kotlin peut varier selon votre installation Flutter.
+    ext["kotlin_version"] = "1.8.20"
     
+    repositories {
+        google()
+        mavenCentral()
+    }
 
-    ndkVersion = "27.0.12077973" 
-    
-    // ...
+    dependencies {
+        // CORRECTION: Utilisation de la syntaxe Kotlin DSL (avec parenthèses) pour classpath.
+        // Cela résout les erreurs "Unresolved reference" et "Unexpected tokens".
+        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${ext["kotlin_version"]}")
+        
+        // Ajouté pour Firebase (google-services), nécessaire si vous utilisez Firebase
+        classpath("com.google.gms:google-services:4.3.15") 
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Nettoyage (suppression de l'ancien dossier de build)
+tasks.register("clean", Delete::class) {
+    delete(rootProject.layout.buildDirectory)
 }

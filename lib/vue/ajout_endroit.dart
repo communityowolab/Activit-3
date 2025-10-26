@@ -1,8 +1,8 @@
+import '../widgets/image_prise.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:io'; 
 import '../providers/endroits_utilisateurs.dart';
-import '../widgets/image_prise.dart'; // Assurez-vous que ce chemin est correct
 
 // La classe doit être ConsumerStatefulWidget pour interagir avec Riverpod et gérer l'état local
 class AjoutEndroit extends ConsumerStatefulWidget {

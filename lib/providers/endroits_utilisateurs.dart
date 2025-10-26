@@ -1,24 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dart:io'; // Import pour le type File
-import '../modele/endroit.dart'; // Import de notre modèle Endroit
+import '../modele/endroit.dart';
 
-// La classe gère l'état : une liste immuable d'objets Endroit
-class EndroitsUtilisateurs extends StateNotifier<List<Endroit>> {
-  // Initialisation de la liste avec une liste vide
-  EndroitsUtilisateurs() : super(const []);
+class EndroitsUtilisateur extends StateNotifier<List<Endroit>> {
+  EndroitsUtilisateur(): super([]);
 
-  // Méthode pour ajouter un nouvel endroit à la liste
-  void ajoutEndroit(String nom, File image) {
-    // 1. Création du nouvel objet Endroit
-    final nouvelEndroit = Endroit(nom: nom, image: image); 
+  void ajoutEndroit(String nom, [dynamic imageFile]) {
+    final nouvel = Endroit(nom: nom, imageFile: imageFile);
+    state = [nouvel, ...state];
+  }
 
-    // 2. Mise à jour de l'état (création d'une nouvelle liste)
-    state = [nouvelEndroit, ...state];
+  void supprimer(String id) {
+    state = state.where((e) => e.id != id).toList();
   }
 }
 
-// Le Provider global qui expose la classe de gestion d'état
-final endroitsProvider = 
-  StateNotifierProvider<EndroitsUtilisateurs, List<Endroit>>(
-    (ref) => EndroitsUtilisateurs(),
-  );
+final endroitsProvider = StateNotifierProvider<EndroitsUtilisateur, List<Endroit>>(
+  (ref) => EndroitsUtilisateur(),
+);

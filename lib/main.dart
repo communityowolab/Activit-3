@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import './vue/endroits_interface.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:dev_mobile_avance/pages/page_accueil.dart';
 
-void main() {
-  runApp(
-    
-    const ProviderScope(child: MonApplication()),
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MonAppli());
 }
 
-class MonApplication extends StatelessWidget {
-  const MonApplication({super.key});
+class MonAppli extends StatelessWidget {
+  const MonAppli({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Gestion d\'endroits favoris',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
-      ),
-      home: const EndroitsInterface(),
+      title: 'Magazine Infos - Rédacteurs',
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      home: const PageAccueil(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
